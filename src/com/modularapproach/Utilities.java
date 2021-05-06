@@ -1,72 +1,60 @@
 package com.modularapproach;
-
+import java.text.DecimalFormat;
 import java.util.Random;
 
-public class Utilities extends PageObjectClass{
-	
-public void getRandomFirstName() {
-
-String[] strFirstName= {"Priya","Roshani","Aditi","Anjali","Shivani","Avni","Ankita","Sakshi",
-			"Gauri","Poonam"};
+public class Utilities {
 		
-Random r = new Random();
-int RandomName= r.nextInt(strFirstName.length);
-System.out.println("First name:"+strFirstName[RandomName]);
-
-}
-
-public void getRandomSurName() {
+	 static String strcharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	
-String[] strSurName= {"Sonar","Sharma","Dubey","Patil","Ahire","Vispute","Jadhav","Verma"};
+	Random random = new Random();
 	
-Random r1 = new Random();
-int RandomSurName= r1.nextInt(strSurName.length);
-System.out.println("Sur name:"+strSurName[RandomSurName]);
-
-}
-
-
-public void getRandomEmail() {
+	StringBuilder sb = new StringBuilder();
 	
-String[] strEmail= {"priyasonar@gmail.com","Sharma@gmail.com","poojadubey123@gmail.com",
-		"Patil434@gmail.com","yashikaVerma789@gmail.com"};
 	
-Random r5 = new Random();
-int RandomEmail= r5.nextInt(strEmail.length);
-System.out.println("User Emailid:"+strEmail[RandomEmail]);
-
-}
-
-
-public void getRandomBirthDate() {
+	// random string
+	public String getRandomString(int intCount) {
+		StringBuilder sb = new StringBuilder();
+		while (intCount-- != 0) {
+				int intCharacter = (int)(Math.random()*strcharacters.length());
+				sb.append(strcharacters.charAt(intCharacter));
+		}
+	return sb.toString();
+	} 	
+	
+	
+	//  random number 
+	public int getRandomNumber(int intFrom, int intTo) {		
+			int intRandomNumber;
+			do {
+				intRandomNumber= (int)(Math.random()*(intTo - intFrom))
+							+ intFrom;
+			}while(intRandomNumber == 0);
+			return intRandomNumber;
+		}
 		
-	Random r2 = new Random();
-		int RandomDate= r2.nextInt(32);
-				System.out.println("User Birth date:"+RandomDate);
-		
-}
-
-
-public void getRandomBirthMonth() {
 	
-	Random r3 = new Random();
-		int RandomMonth= r3.nextInt(12);
-				System.out.println("User Birth Month:"+RandomMonth);
-		
-}
-
-public void getRandomBirthYear() {
+		// emaild id 
+	public String getRandomEmailId() {
+		// TODO Auto-generated method stub
+		return getRandomString(7) + getRandomNumber(0, 9) + "@gmail.com";
+	}
 	
-	String[] strBirthYear= {"2000","2001","2002","2004","2005","2006","2007","2008",
-			"2009","2010"};
-		
-Random r4 = new Random();
-int RandomYear= r4.nextInt(strBirthYear.length);
-System.out.println("User Birth year:"+strBirthYear[RandomYear]);
-
+	
+	// Mobile Number
+	 public String getMobileNumber(){
+		int intNum = random.nextInt(1000000000);
+		DecimalFormat df = new DecimalFormat("000000000"); //remaining 9 digits
+		String strPhoneNumber = getRandomNumber(7,9) + df.format(intNum);
+		return strPhoneNumber;
+	}
 }
-}
 
-
-
-
+    
+	    
+	    
+	    
+	    
+	
+	    
+	        
+	 
